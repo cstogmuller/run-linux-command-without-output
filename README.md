@@ -8,9 +8,7 @@
   starts a program or executes a comand without any output
   'run --uninstall'
   uninstalls run command
-
-  programmed by Christoph Stögmüller
-  cstogmuller@gmail.com
+  
 ```
 Info: You can choose an alias during installation in case the "run" command is busy.
 ### Latest version: 1.0
