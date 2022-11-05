@@ -22,7 +22,7 @@ Make sure you have `git` installed
 Paste the following paragraph into your terminal:
 
 ```bash
-  git clone https://github.com/cstogmuller/run-linux-command-without-output
+  git clone https://github.com/cstogmuller/run-linux-command-without-output.git
   cd run-linux-command-without-output
   chmod a+x install-run.sh
   ./install-run.sh
