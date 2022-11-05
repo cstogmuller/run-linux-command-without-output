@@ -8,7 +8,6 @@
   starts a program or executes a comand without any output
   'run --uninstall'
   uninstalls run command
-  
 ```
 Info: You can choose an alias during installation in case the "run" command is busy.
 ### Latest version: 1.0
