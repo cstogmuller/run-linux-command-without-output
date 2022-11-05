@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+echo "v1.0"
 echo "Please enter a command name to be used for the run tool."
 echo '(The "run" below is a placeholder. You can change it if you want.)'
 read -e -p "> " -i "run" command ignored
