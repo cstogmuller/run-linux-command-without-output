@@ -9,7 +9,7 @@ function help {
   echo
   echo "v1.0"
   echo "programmed by Christoph Stögmüller"
-  echo "cstogmuller@gmail.com"
+  echo "https://github.com/cstogmuller/run-linux-command-without-output"
 }
 
 if [ -z ${1+x} ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
