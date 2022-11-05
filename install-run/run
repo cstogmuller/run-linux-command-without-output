@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function help {
+  echo "Usage:"
+  echo "'${0##*/} [sudo] COMMAND'"
+  echo "starts a program or executes a comand without any output"
+  echo "'${0##*/} --uninstall'"
+  echo "uninstalls ${0##*/} command"
+  echo
+  echo "programmed by Christoph Stögmüller"
+  echo "cstogmuller@gmail.com"
+}
+
+if [ -z ${1+x} ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+  help
+else
+  if [ $1 == "--uninstall" ]; then
+    read -e -p "This will remove the ${0##*/} command. Are you sure? [Y/n] " uninstall
+    if [ "$uninstall" == "y" ] || [ "$uninstall" == "Y" ]; then
+      sudo rm -f -v ${0}
+      echo "Uninstall complete."
+    else
+      echo "Abort."
+    fi
+  else
+    if [[ "${@}" == "sudo "* ]] || [[ "${@}" == *" sudo "* ]]; then
+      echo "Applying root privileges..."
+      sudo echo "${@} > /dev/null 2>&1 &" | /bin/bash
+    else
+      echo "${@} > /dev/null 2>&1 &" | /bin/bash
+    fi
+  fi
+fi
