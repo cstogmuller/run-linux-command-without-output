@@ -21,7 +21,7 @@ else
       echo "You can remove the $command command by using '$command --uninstall'."
       read -e -p "Do you want to delete the installation files (${0%/*})? [Y/n] " delete
       if [ "$delete" == "y" ] || [ "$delete" == "Y" ]; then
-        rm -d -r -f -v ${0%/*}
+        rm -d -r -f ${0%/*}
         echo "Installation files deleted. Installation completed."
       else
         echo "Installation completed."
