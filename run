@@ -4,6 +4,7 @@ function help {
   echo "Usage:"
   echo "'${0##*/} [sudo] COMMAND'"
   echo "starts a program or executes a comand without any output"
+  echo
   echo "'${0##*/} --uninstall'"
   echo "uninstalls ${0##*/} command"
   echo
