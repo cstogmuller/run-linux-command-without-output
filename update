@@ -2,4 +2,15 @@
 
 #v1.0
 
-echo abc
+sudo echo -n
+cp --remove-destination ~/run-linux-command-without-output/run "/tmp"
+sudo mv "/tmp/run" "/usr/bin/${0##*/}"
+sudo chmod a+x "/usr/bin/${0##*/}"
+echo "Update finished."
+read -e -p "Do you want to delete the installation/update files (~/run-linux-command-without-output)? [Y/n] " delete
+if [ "$delete" == "y" ] || [ "$delete" == "Y" ]; then
+  rm -d -r -f ~/run-linux-command-without-output
+  echo "Installation/update files deleted."
+else
+  echo "OK."
+fi
