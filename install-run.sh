@@ -17,9 +17,15 @@ else
       cp --remove-destination "${0%/*}/run" "/tmp"
       sudo mv "/tmp/run" "/usr/bin/$command"
       sudo chmod a+x "/usr/bin/$command"
-      echo "Installation completed. You can now delete this folder."
       echo "The '$command' command is ready to use."
-      echo "You can remove the '$command' command by using '$command --uninstall'."
+      echo "You can remove the $command command by using '$command --uninstall'."
+      read -e -p "Do you want to delete the installation files (${0%/*})? [Y/n] " delete
+      if [ "$delete" == "y" ] || [ "$delete" == "Y" ]; then
+        rm -d -r -f -v ${0%/*}
+        echo "Installation files deleted. Installation completed."
+      else
+        echo "Installation completed."
+      fi
     else
       clear
       echo 'ERROR  The "run" file, which should be in this folder, is missing. Please download the project again.'
