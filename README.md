@@ -6,6 +6,7 @@
   Usage:
   'run [sudo] COMMAND'
   starts a program or executes a comand without any output
+  
   'run --uninstall'
   uninstalls run command
 ```
