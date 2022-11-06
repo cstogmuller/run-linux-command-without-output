@@ -1,15 +1,20 @@
 #!/bin/bash
 
-clear
-echo "v1.0"
+function command {
 echo "Please enter a command name to be used for the run tool."
 echo '(The "run" below is a placeholder. You can change it if you want.)'
 read -e -p "> " -i "run" command ignored
 if [ "$command" == "" ]; then
+  clear
   echo "You have to enter a command name to be used for the run tool."
+  echo
+  command
 else
   if test -f "/usr/bin/$command"; then
+    clear
     echo "The command '$command' already exists."
+    echo
+    command
   else
     if test -f "${0%/*}/run"; then
       clear
@@ -32,3 +37,9 @@ else
     fi
   fi
 fi
+}
+
+
+clear
+echo "v1.0"
+command
