@@ -21,6 +21,7 @@ Paste the following paragraph into your terminal:
 
 ```bash
 cd ~/
+rm -d -r -f "~/run-linux-command-without-output" > /dev/null
 git clone https://github.com/cstogmuller/run-linux-command-without-output.git
 chmod a+x ~/run-linux-command-without-output/install-run.sh
 ~/run-linux-command-without-output/install-run.sh
