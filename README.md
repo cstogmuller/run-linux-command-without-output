@@ -11,8 +11,6 @@ starts a program or executes a comand without any output
 uninstalls run command
 ```
 Info: You can choose an alias during installation in case the "run" command is busy.
-### Latest version: 1.0
-As soon as there is a newer version, you must uninstall "run" (see above) and reinstall it.
 ## Installation
 
 Make sure you have `git` installed
