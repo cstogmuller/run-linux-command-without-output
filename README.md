@@ -13,7 +13,7 @@ uninstalls run command
 Info: You can choose an alias during installation in case the "run" command is busy.
 ## Installation
 
-Make sure you have `git` installed
+Make sure you have `git` and `wget` installed
 
 Paste the following paragraph into your terminal:
 
