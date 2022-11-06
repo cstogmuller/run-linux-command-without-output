@@ -1,5 +1,7 @@
 #!/bin/bash
 
+version="v1.0"
+
 function help {
   echo "Usage:"
   echo "'${0##*/} [sudo] COMMAND'"
@@ -8,12 +10,12 @@ function help {
   echo "'${0##*/} --uninstall'"
   echo "uninstalls ${0##*/} command"
   echo
-  echo "v1.0"
+  echo "$version"
   echo "programmed by Christoph Stögmüller"
   echo "https://github.com/cstogmuller/run-linux-command-without-output"
 }
 
-if [ -z ${1+x} ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+if [ -z ${1+x} ] || [ "$1" == "--help" ]; then
   help
 else
   if [ $1 == "--uninstall" ]; then
@@ -25,11 +27,33 @@ else
       echo "Abort."
     fi
   else
-    if [[ "${@}" == "sudo "* ]] || [[ "${@}" == *" sudo "* ]]; then
-      echo "Applying root privileges..."
-      sudo echo "${@} > /dev/null 2>&1 &" | /bin/bash
+    if [ $1 == "--update" ]; then
+      echo "Checking for updates..."
+      if ping -q -w 1 -c 1 github.com > /dev/null 2>&1; then
+        wget -t 0 -O "/tmp/version" https://raw.githubusercontent.com/cstogmuller/run-linux-command-without-output/main/version 2>&1 | grep -i "failed\|error"
+        if [ `cat /tmp/version` == "$version" ]; then
+          rm /tmp/version
+          echo "You have the latest version."
+        else
+          rm /tmp/version
+          echo "A newer version is available."
+          cd ~/
+          rm -d -r -f ~/run-linux-command-without-output > /dev/null
+          git clone https://github.com/cstogmuller/run-linux-command-without-output.git
+          cd
+          chmod a+x ~/run-linux-command-without-output/install-run.sh
+          source ~/run-linux-command-without-output/update
+        fi
+      else
+        echo "You are offline!"
+      fi
     else
-      echo "${@} > /dev/null 2>&1 &" | /bin/bash
+      if [[ "${@}" == "sudo "* ]] || [[ "${@}" == *" sudo "* ]]; then
+        echo "Applying root privileges..."
+        sudo echo "${@} > /dev/null 2>&1 &" | /bin/bash
+      else
+        echo "${@} > /dev/null 2>&1 &" | /bin/bash
+      fi
     fi
   fi
 fi
