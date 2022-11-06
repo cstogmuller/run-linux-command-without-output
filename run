@@ -7,6 +7,9 @@ function help {
   echo "'${0##*/} [sudo] COMMAND'"
   echo "starts a program or executes a comand without any output"
   echo
+  echo "'${0##*/} --update'"
+  echo "checks for updates and installs them if necessary"
+  echo
   echo "'${0##*/} --uninstall'"
   echo "uninstalls ${0##*/} command"
   echo
